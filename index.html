@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeepney Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>JeepLink</h1>
+            <p>Commuter Dashboard</p>
+        </header>
+
+        <main>
+            <div class="card fade-in">
+                <div class="icon-box blue"><i data-lucide="map-pin"></i></div>
+                <div class="card-content">
+                    <h3>Jeep Location</h3>
+                    <p id="location-status">Scanning for nearby Jeeps...</p>
+                </div>
+            </div>
+
+            <div class="card fade-in" style="animation-delay: 0.1s;">
+                <div class="icon-box green"><i data-lucide="clock"></i></div>
+                <div class="card-content">
+                    <h3>ETA</h3>
+                    <p>Next Jeep: <strong id="eta-timer">-- mins</strong></p>
+                </div>
+            </div>
+
+            <div class="card fade-in" style="animation-delay: 0.2s;">
+                <div class="icon-box orange"><i data-lucide="users"></i></div>
+                <div class="card-content">
+                    <h3>Crowd Level</h3>
+                    <div class="status-pill low">Low Capacity</div>
+                </div>
+            </div>
+        </main>
+
+        <button class="alert-btn" onclick="triggerAlert()">
+            <i data-lucide="bell"></i> Notify Me
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
