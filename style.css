@@ -32,3 +32,43 @@ body { margin: 0; font-family: -apple-system, sans-serif; background: #f2f2f7; }
 .primary-btn { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--primary); color: white; font-weight: bold; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 1. Spinning Animation for the Sync Button */
+.spinning {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 2. Pulse effect when a card is clicked */
+.interactive-card {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.interactive-card:active {
+    transform: scale(0.92);
+}
+
+.pulse {
+    animation: shadow-pulse 0.4s ease-out;
+}
+
+@keyframes shadow-pulse {
+    0% { box-shadow: 0 0 0 0px rgba(0, 122, 255, 0.4); }
+    100% { box-shadow: 0 0 0 15px rgba(0, 122, 255, 0); }
+}
+
+/* 3. Smooth Tab Sliding */
+.view {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.view.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(10px);
+}

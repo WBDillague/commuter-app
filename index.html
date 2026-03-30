@@ -51,6 +51,17 @@
                     <h2 id="ai-status">ANALYZING...</h2>
                     <div class="progress-bg"><div id="ai-bar" class="progress-fill"></div></div>
                 </div>
+				<div class="ai-status-container">
+					<button class="refresh-btn" onclick="triggerAIReload()">
+						<i data-lucide="refresh-cw" id="sync-icon"></i>
+						Sync with ESP32
+					</button>
+				</div>
+
+				<div class="stat-card interactive-card" onclick="this.classList.toggle('pulse')">
+					<i data-lucide="thermometer"></i>
+					<span id="temp-val">--</span>°C
+				</div>
             </section>
         </main>
 

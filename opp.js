@@ -40,3 +40,48 @@ function updateSystem() {
 
 setInterval(updateSystem, 3000);
 updateSystem();
+
+function triggerAIReload() {
+    const icon = document.getElementById('sync-icon');
+    const aiBox = document.getElementById('ai-container');
+    
+    // 1. Start the "Thinking" animation
+    icon.classList.add('spinning');
+    aiBox.style.opacity = "0.5";
+    aiBox.style.transform = "scale(0.98)";
+
+    // 2. Simulate Network Delay (1.5 seconds)
+    setTimeout(() => {
+        // Update the data
+        updateSystem(); 
+        
+        // Stop animation and "pop" the UI back
+        icon.classList.remove('spinning');
+        aiBox.style.opacity = "1";
+        aiBox.style.transform = "scale(1)";
+        
+        // Add a temporary glow to show it's updated
+        aiBox.classList.add('pulse');
+        setTimeout(() => aiBox.classList.remove('pulse'), 500);
+    }, 1500);
+}
+
+// Update the switchTab function to handle smooth entry
+function switchTab(tabName) {
+    const views = document.querySelectorAll('.view');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    views.forEach(v => v.classList.add('hidden'));
+    buttons.forEach(b => b.classList.remove('active'));
+
+    const activeView = document.getElementById(tabName + '-view');
+    activeView.classList.remove('hidden');
+    
+    // Add a slight delay for the slide-in effect
+    setTimeout(() => {
+        activeView.style.transform = "translateX(0)";
+        activeView.style.opacity = "1";
+    }, 10);
+    
+    event.currentTarget.classList.add('active');
+}
