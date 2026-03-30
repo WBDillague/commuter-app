@@ -3,62 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeepney Tracker</title>
+    <title>SmartJeep Go</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div class="app-container">
-        <header>
-            <h1>JeepLink</h1>
-            <p>Commuter Dashboard</p>
+    <div class="app-shell">
+        <header class="compact-header">
+            <div class="brand">
+                <i data-lucide="zap" class="logo-icon"></i>
+                <span>SmartJeep <strong>AI</strong></span>
+            </div>
+            <div class="live-indicator">● LIVE</div>
         </header>
 
-        <main>
-            <div class="card fade-in">
-                <div class="icon-box blue"><i data-lucide="map-pin"></i></div>
-                <div class="card-content">
-                    <h3>Jeep Location</h3>
-                    <p id="location-status">Scanning for nearby Jeeps...</p>
-                </div>
-            </div>
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('map')">Map</button>
+            <button class="tab-btn" onclick="switchTab('stats')">Vehicle</button>
+        </div>
 
-            <div class="card fade-in" style="animation-delay: 0.1s;">
-                <div class="icon-box green"><i data-lucide="clock"></i></div>
-                <div class="card-content">
-                    <h3>ETA</h3>
-                    <p>Next Jeep: <strong id="eta-timer">-- mins</strong></p>
-                </div>
-            </div>
+        <main id="main-content">
+            <section id="map-view" class="view">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m13!1d15444.4!2d121.0483!3d14.6760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" 
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </section>
 
-            <div class="card fade-in" style="animation-delay: 0.2s;">
-                <div class="icon-box orange"><i data-lucide="users"></i></div>
-                <div class="card-content">
-                    <h3>Crowd Level</h3>
-                    <div class="status-pill low">Low Capacity</div>
+            <section id="stats-view" class="view hidden">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i data-lucide="thermometer"></i>
+                        <span id="temp-val">--</span>°C
+                        <small>Temp</small>
+                    </div>
+                    <div class="stat-card">
+                        <i data-lucide="droplets"></i>
+                        <span id="hum-val">--</span>%
+                        <small>Humidity</small>
+                    </div>
                 </div>
-            </div>
-			<div class="card fade-in" style="animation-delay: 0.1s;">
-				<div class="icon-box light-blue"><i data-lucide="thermometer"></i></div>
-				<div class="card-content">
-					<h3>Cabin Comfort</h3>
-					<p><span id="temp-val">--</span>°C | <span id="hum-val">--</span>% Humidity</p>
-				</div>
-			</div>
 
-			<div class="card fade-in" style="animation-delay: 0.3s;">
-				<div class="icon-box" id="ai-icon-box"><i data-lucide="brain-circuit"></i></div>
-				<div class="card-content">
-					<h3>AI Status</h3>
-					<div id="ai-status-pill" class="status-pill">Analyzing...</div>
-				</div>
-			</div>
+                <div class="ai-box" id="ai-container">
+                    <div class="ai-header">
+                        <i data-lucide="brain-circuit"></i>
+                        <span>Agentic AI Decision</span>
+                    </div>
+                    <h2 id="ai-status">ANALYZING...</h2>
+                    <div class="progress-bg"><div id="ai-bar" class="progress-fill"></div></div>
+                </div>
+            </section>
         </main>
 
-        <button class="alert-btn" onclick="triggerAlert()">
-            <i data-lucide="bell"></i> Notify Me
-        </button>
+        <footer class="action-footer">
+            <button class="primary-btn" onclick="triggerAlert()">Notify when Arriving</button>
+        </footer>
     </div>
 
     <script src="app.js"></script>

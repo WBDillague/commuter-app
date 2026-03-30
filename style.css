@@ -1,106 +1,34 @@
 :root {
-    --bg-color: #f4f7f6;
-    --card-bg: #ffffff;
-    --text-main: #2d3436;
-    --primary-blue: #0984e3;
+    --primary: #007AFF;
+    --success: #34C759;
+    --warning: #FFCC00;
+    --danger: #FF3B30;
+    --glass: rgba(255, 255, 255, 0.8);
 }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    color: var(--text-main);
-}
+body { margin: 0; font-family: -apple-system, sans-serif; background: #f2f2f7; }
 
-.app-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    min-height: 100vh;
-}
+.app-shell { max-width: 430px; margin: 0 auto; background: #fff; min-height: 100vh; display: flex; flex-direction: column; }
 
-header {
-    margin: 20px 0 40px;
-    text-align: left;
-}
+.compact-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+.brand { display: flex; align-items: center; gap: 8px; color: var(--primary); }
+.live-indicator { color: var(--danger); font-size: 10px; font-weight: 800; }
 
-header h1 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
+.tab-bar { display: flex; padding: 10px 20px; gap: 10px; }
+.tab-btn { flex: 1; padding: 8px; border: none; border-radius: 8px; background: #e5e5ea; cursor: pointer; font-weight: 600; }
+.tab-btn.active { background: var(--primary); color: white; }
 
-/* Card Styling */
-.card {
-    background: var(--card-bg);
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-}
+.view { animation: fadeIn 0.3s ease; }
+.hidden { display: none; }
 
-.card:hover { transform: scale(1.02); }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+.stat-card { background: #f9f9f9; padding: 15px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 
-.icon-box {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-}
+.ai-box { margin: 0 20px; padding: 20px; border-radius: 16px; background: #1c1c1e; color: white; text-align: center; }
+.progress-bg { background: #3a3a3c; height: 8px; border-radius: 4px; margin-top: 15px; overflow: hidden; }
+.progress-fill { height: 100%; transition: width 0.5s, background 0.5s; }
 
-.blue { background: #e1f5fe; color: #03a9f4; }
-.green { background: #e8f5e9; color: #4caf50; }
-.orange { background: #fff3e0; color: #ff9800; }
+.action-footer { padding: 20px; margin-top: auto; }
+.primary-btn { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--primary); color: white; font-weight: bold; }
 
-.status-pill {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-.low { background: #c8e6c9; color: #2e7d32; }
-
-/* Animations */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.alert-btn {
-    width: 100%;
-    padding: 18px;
-    border: none;
-    border-radius: 12px;
-    background: var(--primary-blue);
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.light-blue { background: #e0f7fa; color: #00acc1; }
-
-/* AI State Colors */
-.status-available { background: #c8e6c9; color: #2e7d32; } /* Green */
-.status-near-full { background: #fff9c4; color: #fbc02d; } /* Yellow */
-.status-full { background: #ffcdd2; color: #c62828; }      /* Red */
-
-#ai-icon-box { background: #ede7f6; color: #5e35b1; transition: 0.3s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
