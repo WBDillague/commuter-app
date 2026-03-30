@@ -95,3 +95,12 @@ header h1 { margin: 0; font-size: 2rem; color: var(--primary-blue); }
     gap: 10px;
     margin-top: 20px;
 }
+
+.light-blue { background: #e0f7fa; color: #00acc1; }
+
+/* AI State Colors */
+.status-available { background: #c8e6c9; color: #2e7d32; } /* Green */
+.status-near-full { background: #fff9c4; color: #fbc02d; } /* Yellow */
+.status-full { background: #ffcdd2; color: #c62828; }      /* Red */
+
+#ai-icon-box { background: #ede7f6; color: #5e35b1; transition: 0.3s; }

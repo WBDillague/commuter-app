@@ -39,6 +39,21 @@
                     <div class="status-pill low">Low Capacity</div>
                 </div>
             </div>
+			<div class="card fade-in" style="animation-delay: 0.1s;">
+				<div class="icon-box light-blue"><i data-lucide="thermometer"></i></div>
+				<div class="card-content">
+					<h3>Cabin Comfort</h3>
+					<p><span id="temp-val">--</span>°C | <span id="hum-val">--</span>% Humidity</p>
+				</div>
+			</div>
+
+			<div class="card fade-in" style="animation-delay: 0.3s;">
+				<div class="icon-box" id="ai-icon-box"><i data-lucide="brain-circuit"></i></div>
+				<div class="card-content">
+					<h3>AI Status</h3>
+					<div id="ai-status-pill" class="status-pill">Analyzing...</div>
+				</div>
+			</div>
         </main>
 
         <button class="alert-btn" onclick="triggerAlert()">
