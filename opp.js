@@ -1,72 +1,9 @@
+// Initialize Icons
 lucide.createIcons();
 
-// 1. Tab Switching Logic
-function switchTab(tab) {
-    document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    
-    document.getElementById(tab + '-view').classList.remove('hidden');
-    event.target.classList.add('active');
-}
-
-// 2. Simulated Agentic AI Data
-function updateSystem() {
-    // DHT22 Simulation
-    document.getElementById('temp-val').innerText = (27 + Math.random() * 5).toFixed(1);
-    document.getElementById('hum-val').innerText = (65 + Math.random() * 10).toFixed(0);
-
-    // AI Density Decision
-    const count = Math.floor(Math.random() * 25);
-    const status = document.getElementById('ai-status');
-    const bar = document.getElementById('ai-bar');
-    const pct = (count / 20) * 100;
-
-    bar.style.width = Math.min(pct, 100) + "%";
-
-    if (count <= 8) {
-        status.innerText = "AVAILABLE";
-        status.style.color = "#34C759";
-        bar.style.background = "#34C759";
-    } else if (count <= 18) {
-        status.innerText = "NEAR FULL";
-        status.style.color = "#FFCC00";
-        bar.style.background = "#FFCC00";
-    } else {
-        status.innerText = "FULL";
-        status.style.color = "#FF3B30";
-        bar.style.background = "#FF3B30";
-    }
-}
-
-setInterval(updateSystem, 3000);
-updateSystem();
-
-function triggerAIReload() {
-    const icon = document.getElementById('sync-icon');
-    const aiBox = document.getElementById('ai-container');
-    
-    // 1. Start the "Thinking" animation
-    icon.classList.add('spinning');
-    aiBox.style.opacity = "0.5";
-    aiBox.style.transform = "scale(0.98)";
-
-    // 2. Simulate Network Delay (1.5 seconds)
-    setTimeout(() => {
-        // Update the data
-        updateSystem(); 
-        
-        // Stop animation and "pop" the UI back
-        icon.classList.remove('spinning');
-        aiBox.style.opacity = "1";
-        aiBox.style.transform = "scale(1)";
-        
-        // Add a temporary glow to show it's updated
-        aiBox.classList.add('pulse');
-        setTimeout(() => aiBox.classList.remove('pulse'), 500);
-    }, 1500);
-}
-
-// Update the switchTab function to handle smooth entry
+/**
+ * Switch between Map and Stats views
+ */
 function switchTab(tabName) {
     const views = document.querySelectorAll('.view');
     const buttons = document.querySelectorAll('.tab-btn');
@@ -77,11 +14,68 @@ function switchTab(tabName) {
     const activeView = document.getElementById(tabName + '-view');
     activeView.classList.remove('hidden');
     
-    // Add a slight delay for the slide-in effect
-    setTimeout(() => {
-        activeView.style.transform = "translateX(0)";
-        activeView.style.opacity = "1";
-    }, 10);
-    
+    // Add 'active' class to the button that was clicked
     event.currentTarget.classList.add('active');
 }
+
+/**
+ * Simulate the Cloud Syncing process
+ */
+function triggerAIReload() {
+    const icon = document.getElementById('sync-icon');
+    const card = document.getElementById('ai-card');
+    
+    icon.classList.add('spinning');
+    card.style.opacity = "0.6";
+
+    // Simulate network delay from ESP32 to Cloud
+    setTimeout(() => {
+        updateHardwareData();
+        icon.classList.remove('spinning');
+        card.style.opacity = "1";
+        card.classList.add('pulse');
+        setTimeout(() => card.classList.remove('pulse'), 500);
+    }, 1200);
+}
+
+/**
+ * Generate random data to mimic real IoT sensors (DHT22 & ESP32-CAM)
+ */
+function updateHardwareData() {
+    // 1. Environmental Data
+    const temp = (26 + Math.random() * 6).toFixed(1);
+    const hum = (60 + Math.random() * 15).toFixed(0);
+    document.getElementById('temp-val').innerText = temp;
+    document.getElementById('hum-val').innerText = hum;
+
+    // 2. Agentic AI Occupancy Decision
+    const capacity = 22;
+    const currentPass = Math.floor(Math.random() * 25); // 0 to 24 passengers
+    const pct = (currentPass / capacity) * 100;
+    
+    const status = document.getElementById('ai-status');
+    const bar = document.getElementById('ai-bar');
+    const detail = document.getElementById('occupancy-detail');
+
+    bar.style.width = Math.min(pct, 100) + "%";
+    detail.innerText = `Current Load: ${currentPass} / ${capacity} passengers`;
+
+    if (currentPass <= 10) {
+        status.innerText = "AVAILABLE";
+        status.style.color = "#34C759";
+        bar.style.background = "#34C759";
+    } else if (currentPass <= 19) {
+        status.innerText = "NEAR FULL";
+        status.style.color = "#FFCC00";
+        bar.style.background = "#FFCC00";
+    } else {
+        status.innerText = "FULL";
+        status.style.color = "#FF3B30";
+        bar.style.background = "#FF3B30";
+    }
+}
+
+// Initial Data Load
+updateHardwareData();
+// Auto-refresh every 10 seconds to simulate live movement
+setInterval(updateHardwareData, 10000);
