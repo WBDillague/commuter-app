@@ -6,33 +6,31 @@
     <title>E-Jeep Live Tracker</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2>E-Jeep Live Tracker</h2>
+    <div class="header">
+        <h2>E-Jeep Live Tracker</h2>
+        <p>Click a vehicle to see density and distance.</p>
+    </div>
 
     <div class="stats-container">
         <div class="stat-item">
-            <span class="stat-label">Status</span>
-            <span id="status" class="stat-value">Connecting...</span>
+            <span class="stat-label">My Status</span>
+            <span id="user-status" class="stat-value">Locating...</span>
         </div>
         <div class="stat-item">
-            <span class="stat-label">Distance to Me</span>
-            <span id="distance" class="stat-value">0.00 km</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-label">ETA</span>
-            <span id="eta" class="stat-value">-- mins</span>
+            <span class="stat-label">Active Vehicles</span>
+            <span id="vehicle-count" class="stat-value">0</span>
         </div>
     </div>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-marker-sliding@0.2.0/dist/leaflet-marker-sliding.min.js"></script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-
     <script src="script.js"></script>
 </body>
 </html>

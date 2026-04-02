@@ -1,54 +1,65 @@
-/* General Page Styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f0f2f5;
+    padding: 15px;
+    background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
     height: 100vh;
     box-sizing: border-box;
 }
 
-h2 {
-    color: #1a73e8;
-    margin-top: 0;
+.header h2 {
+    margin: 0;
+    color: #0d6efd;
 }
 
-/* The Stats Bar */
+.header p {
+    margin: 5px 0 15px 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
 .stats-container {
     display: flex;
-    justify-content: space-between;
-    background: white;
-    padding: 15px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 15px;
     margin-bottom: 15px;
 }
 
 .stat-item {
-    text-align: center;
+    flex: 1;
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.8rem;
-    color: #5f6368;
+    font-size: 0.7rem;
+    color: #adb5bd;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: bold;
 }
 
 .stat-value {
-    font-size: 1.1rem;
-    color: #202124;
+    font-size: 1rem;
     font-weight: 600;
+    color: #212529;
 }
 
-/* The Map */
 #map {
-    flex-grow: 1; /* Makes the map fill the remaining screen space */
+    flex-grow: 1;
     width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 3px solid white;
+}
+
+/* Custom Popup Styling */
+.leaflet-popup-content-wrapper {
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border: 2px solid white;
+    padding: 5px;
 }
