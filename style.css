@@ -1,23 +1,27 @@
+/* General Page Styling with Blue Hue */
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 15px;
-    background-color: #f8f9fa;
+    /* A deep, modern blue gradient */
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); 
     display: flex;
     flex-direction: column;
     height: 100vh;
     box-sizing: border-box;
+    color: white; /* Default text to white for the blue background */
 }
 
 .header h2 {
     margin: 0;
-    color: #0d6efd;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .header p {
     margin: 5px 0 15px 0;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #bbdefb; /* Light blue subtext */
 }
 
 .stats-container {
@@ -28,17 +32,19 @@ body {
 
 .stat-item {
     flex: 1;
-    background: white;
+    /* Translucent white for a glassmorphism effect */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
     padding: 12px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stat-label {
     display: block;
     font-size: 0.7rem;
-    color: #adb5bd;
+    color: #e3f2fd; /* Very light blue labels */
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: bold;
@@ -47,19 +53,25 @@ body {
 .stat-value {
     font-size: 1rem;
     font-weight: 600;
-    color: #212529;
+    color: #ffffff;
 }
 
+/* The Map */
 #map {
     flex-grow: 1;
     width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 3px solid white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 4px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom Popup Styling */
+/* Custom Popup Styling (stays white for readability) */
 .leaflet-popup-content-wrapper {
     border-radius: 12px;
     padding: 5px;
+    color: #333; /* Dark text inside the white popup */
+}
+
+.leaflet-popup-tip {
+    background: white;
 }
