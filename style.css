@@ -68,6 +68,9 @@ html, body {
     border-radius: 12px;
     border: 1px solid #233554;
     z-index: 1;
+	height: 500px !important; /* Force it to 500px height */
+    min-height: 500px;
+    background-color: #0d1b2a; /* A slightly different blue to see it */
 }
 
 /* 4. Mobile Popup Adjustments */
