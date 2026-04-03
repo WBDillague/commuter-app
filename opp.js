@@ -1,5 +1,23 @@
 // Add this to your existing script.js inside the map initialization
 
+// 1. Connect to your local server
+const socket = io('http://localhost:3000');
+
+// 2. Listen for the "Broadcaster" from the server
+socket.on('jeepUpdate', (data) => {
+    // This calls the function we already wrote!
+    updateVehicle(data.id, data.lat, data.lon, data.density);
+});
+
+// 3. Get all jeeps currently active when you first open the app
+socket.on('initialData', (allJeeps) => {
+    for (let id in allJeeps) {
+        const jeep = allJeeps[id];
+        updateVehicle(id, jeep.lat, jeep.lon, jeep.density);
+    }
+});
+
+
 // 1. Better Mobile Map Options
 const map = L.map('map', {
     zoomControl: false, // We'll move zoom to the bottom-right for thumb access
